@@ -327,7 +327,8 @@ t1&lt;- Sys.time()
 model_rf&lt;- train(training$classe ~., data=prCompTraining, method=&quot;rf&quot;, ntree=50)
 int&lt;- difftime(Sys.time(), t1, units=&quot;secs&quot;)
 predict_rf&lt;- predict(model_rf, newdata=prCompTesting)
-confusionMatrix(predict_rf, testing$classe)</code></pre>
+M&lt;- confusionMatrix(predict_rf, testing$classe)
+M</code></pre>
 <pre><code>## Confusion Matrix and Statistics
 ## 
 ##           Reference
@@ -359,7 +360,7 @@ confusionMatrix(predict_rf, testing$classe)</code></pre>
 ## Detection Rate          0.276    0.179    0.167    0.152    0.177
 ## Detection Prevalence    0.285    0.186    0.189    0.160    0.180
 ## Balanced Accuracy       0.978    0.958    0.966    0.958    0.979</code></pre>
-<p><em>the time of execution were 188.42 seconds and the accuracy 0.9374.</em></p>
+<p><em>the time of execution were 211.6 seconds and the accuracy 0.9507.</em></p>
 <p><em>The following plot display the percentage rate error over the number of tree:</em></p>
 <pre class="r"><code>plot(model_rf$finalModel$err.rate[,1], main=&quot;Random Forest Models&quot;,
      xlab=&quot;Number of Trees&quot;, ylab=&quot;Percentage Error&quot;, pch=19, cex=1, col=&quot;red&quot;)</code></pre>
